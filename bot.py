@@ -12,6 +12,20 @@ client = commands.Bot(command_prefix="!")
 async def on_ready():
     print("Garbage cleaner is ready.")
 
+def caps(string):
+    memed_string = ""
+    string = string.lower()
+    string = string.strip()
+    for i in range(len(string)):
+        if i % 2 == 0:
+            if string[i] == " " or string[i] == "?" or string[i] == "!" or string[i] == "." or string[i] == "\"" or string[i] == "," or string[i] == "'" or string[i] == "’" or string[i] == ":" or string[i] == ";" or string[i] == "-":
+                memed_string = "  " + memed_string + " "
+            else:
+                memed_string = memed_string + string[i].upper()
+        else: memed_string = memed_string + string[i]
+
+    return memed_string
+
 
 # Aiden memeify function
 def memeify(string):
@@ -35,9 +49,20 @@ async def on_message(message):
     if message.content == "nick":
         await client.send_message(message.channel, "posts cancer")
 
+    elif message.content.startswith('!caps'):
+        args = message.content.split(" ")
+        to_meme = ""
+        await client.delete_message(message)
+        for word in args[1:]:
+            to_meme = to_meme + word
+
+        memed_string = caps(to_meme)
+        await client.send_message(message.channel, memed_string)
+
     elif message.content.startswith('!memeify'):
         args = message.content.split(" ")
         to_meme = ""
+        await client.delete_message(message)
         for word in args[1:]:
             to_meme = to_meme + word
 
