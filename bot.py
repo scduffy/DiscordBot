@@ -4,7 +4,6 @@ from discord.ext import commands
 import asyncio
 import time
 
-
 Client = discord.Client()
 client = commands.Bot(command_prefix="!")
 
@@ -12,6 +11,21 @@ client = commands.Bot(command_prefix="!")
 @client.event
 async def on_ready():
     print("Garbage cleaner is ready.")
+
+
+# Aiden memeify function
+def memeify(string):
+    memed_string = ""
+    string = string.lower()
+    string = string.strip()
+    for i in range(len(string)):
+        if string[i] == " " or string[i] == "?" or string[i] == "!" or string[i] == "." or string[i] == "\"" or string[i] == "," or string[i] == "'" or string[i] == "’" or string[i] == ":" or string[i] == ";" or string[i] == "-":
+            memed_string = " " + memed_string
+        elif string[i] == "b":
+            memed_string = memed_string + " :b:"
+        else:
+            memed_string = memed_string + " :regional_indicator_" + string[i] + ":"
+    return memed_string
 
 # Scans all messages posted on server.
 @client.event
@@ -21,18 +35,17 @@ async def on_message(message):
     if message.content == "nick":
         await client.send_message(message.channel, "posts cancer")
 
-    elif message.content.startswith('!msg_len'):
+    elif message.content.startswith('!memeify'):
         args = message.content.split(" ")
+        to_meme = ""
+        for word in args[1:]:
+            to_meme = to_meme + word
 
-        if not args[1].isdigit():
-            await client.sent_message(message.channel, "Argument not valid, not a digit.")
-        else:
-            args = int(args[1])
-            await client.send_message(message.channel, "Changed Nick's max message length.")
-            message_length = args
+        memed_string = memeify(to_meme)
+        await client.send_message(message.channel, memed_string)
 
     # Checks the author of the post is nick.
-    elif message.author.id == "212286463642042369":
+    elif message.author.id == "344194195344588810":
         # Checks if the length of the message exceeds 200 characters (can be changed later to less).
         if len(message.content) >= message_length:
             # Deletes message and notifies server of deletion.
