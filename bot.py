@@ -149,7 +149,10 @@ def save_nickpost(message):
     new_message = ""
     temp_file = open("tempfile.txt", "r")
     for line in temp_file:
-        new_message += line.replace("\n", "")
+        line = line.replace("@", "")
+        line = line.replace("\n", "")
+        new_message += line
+        #new_message += line.replace("\n", "")
 
     temp_file.close()
 
@@ -182,6 +185,23 @@ def memeify(string):
         else:
             memed_string = memed_string + " :regional_indicator_" + string[i] + ":"
     return memed_string
+
+
+def to_piglatin(message):
+    output = ""
+    consonant_pairs = ['sh', 'gl', 'ch', 'ph', 'tr', 'br', 'fr', 'bl', 'gr', 'st', 'sl', 'cl', 'pl', 'fl']
+    vowls = ['a', 'e', 'i', 'o', 'u']
+    message = message.split()
+    for word in message:
+        if word[:2] in consonant_pairs:
+            output += word[2:] + word[:2] + "ay "
+        elif not word[0] in vowls:
+            output += word[1:] + word[0] + "ay "
+        else:
+            output += word + "way "
+
+    return output
+
 
 # Scans all messages posted on server.
 @client.event
@@ -239,7 +259,7 @@ async def on_message(message):
     elif message.content.startswith('!caps'):
         args = message.content.split(" ")
         to_meme = ""
-        await client.delete_message(message)
+        #await client.delete_message(message)
         for word in args[1:]:
             to_meme = to_meme + word
 
@@ -255,6 +275,15 @@ async def on_message(message):
             to_meme = to_meme + word
 
         memed_string = memeify(to_meme)
+        await client.send_message(message.channel, memed_string)
+
+    elif message.content.startswith('!pig'):
+        args = message.content.split(" ")
+        to_meme = ""
+        for word in args[1:]:
+            to_meme = to_meme + word
+
+        memed_string = to_piglatin(to_meme)
         await client.send_message(message.channel, memed_string)
 
     # Checks the author of the post is nick.
