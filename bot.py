@@ -118,8 +118,12 @@ def retrieve_nickpost():
     file = open("nickposts.txt")
     nickpost_list = []
 
+
     for nickpost in file:
+        nickpost.replace("“", "\"")
+        nickpost.replace("@", "\"")
         nickpost_list.append(nickpost)
+
 
     nickpost_index = random.randint(0, len(nickpost_list)-1)
     output += nickpost_list[nickpost_index]
@@ -166,6 +170,9 @@ def save_nickpost(message):
         for chromosome in nickpost_list:
             chromosome = chromosome.replace("[]", "")
             chromosome = chromosome.replace("\n", "")
+
+            chromosome = chromosome.replace("@", "")
+
             file.write(chromosome + "\n")
             #file.write(str(nickpost_list))
     nickpost_list.clear()
@@ -281,7 +288,7 @@ async def on_message(message):
         args = message.content.split(" ")
         to_meme = ""
         for word in args[1:]:
-            to_meme = to_meme + word
+            to_meme = to_meme + word + " "
 
         memed_string = to_piglatin(to_meme)
         await client.send_message(message.channel, memed_string)
