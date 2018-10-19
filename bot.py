@@ -216,7 +216,7 @@ async def on_message(message):
     message_length = 200
     # If someone posts just nick in lowercase the bot will respond with "posts cancer".
     if message.content.upper() == "NICK":
-        await client.send_message(message.channel, "What do you do?")
+        await client.send_message(message.channel, "is an ABSOLUTE UNIT")
 
     elif message.content.upper() == "!NICKPOST":
         await client.send_message(message.channel, retrieve_nickpost())
@@ -236,11 +236,20 @@ async def on_message(message):
     elif message.content.upper() == "RYAN":
         await client.send_message(message.channel, "knows his root beer. ")
 
+    elif message.content.upper() == "KAYLEIGH":
+        await client.send_message(message.channel, "asks Nick \"what do you do?\"")
+
     elif message.content.upper() == "JOON":
         await client.send_message(message.channel, "is a clear toaster boi.")
 
     elif message.content.upper() == "CHASE" or message.content.upper() == "AIDEN" or message.content.upper() == "NEIL":
         await client.send_message(message.channel, "is a CHAD.")
+
+    elif message.content.upper() == "SERRANO":
+        await client.send_message(message.channel, "is an absolute CHAD.")
+
+    elif message.content.upper() == "ANDRES":
+        await client.send_message(message.channel, "failed AP Comp Sci.")
 
     elif message.content.startswith('!begone'):
         #nick_id = discord.Server.get_member(discord.Server._members, "88489537772212224")
@@ -261,6 +270,15 @@ async def on_message(message):
         #await client.delete_message(message)
         await client.send_message(message.channel, "https://media.tenor.com/images/2063f80cb02309fd6a3c4da500a1d1de/tenor.gif")
         await client.send_message(message.channel, "CONCERN")
+
+    elif message.content.startswith("!say"):
+        args = message.content.split(" ")
+        to_meme = ""
+        for word in args[1:]:
+            to_meme = to_meme + word + " "
+        await client.send_message(message.channel, to_meme)
+        await client.delete_message(message)
+
 
     # Makes capitals out of the given string.
     elif message.content.startswith('!caps'):
