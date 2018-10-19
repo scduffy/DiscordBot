@@ -3,6 +3,7 @@ from discord.ext import commands
 from datetime import datetime
 import random
 from discord import Game
+import time
 import asyncio
 
 client = discord.Client()
@@ -367,6 +368,24 @@ async def nick(ctx):
     elif random_num == 11:
         await ctx.send('https://imgur.com/3fsoArI')
 
+
+@bot.command()
+async def atcolin(ctx, *, message: str):
+    args = message.split(" ")
+    x = 0
+    if args[0].isdigit():
+        i = int(args[0])
+        while x < i:
+            await ctx.send('<@338503364751130627>')
+            time.sleep(.25)
+            x += 1
+    else:
+        while x < 10:
+            await ctx.send('<@338503364751130627>')
+            time.sleep(.25)
+            x += 1
+
+
 bot.remove_command('help')
 
 
@@ -390,6 +409,7 @@ async def help(ctx):
     embed.add_field(name="!change_status", value="Changes the game the bot is playing to the input."
                                                  " Requires Admin permissions.", inline=False)
     embed.add_field(name="!andres", value="Reminds andres of a good place to learn how to code.", inline=False)
+    embed.add_field(name="!atcolin", value="@'s colin for a specific num of times.", inline=False)
 
     await ctx.send(embed=embed)
 
