@@ -371,17 +371,26 @@ async def nick(ctx):
 
 @bot.command()
 async def atcolin(ctx, *, message: str):
+
     args = message.split(" ")
     x = 0
+    output = ""
+    size = len(args)
+    words = args[1:size]
+
+    if args[1] != "":
+        for word in words:
+            output += (word + " ")
+
     if args[0].isdigit():
         i = int(args[0])
         while x < i:
-            await ctx.send('<@338503364751130627>')
+            await ctx.send('<@338503364751130627>' + output)
             time.sleep(.25)
             x += 1
     else:
         while x < 10:
-            await ctx.send('<@338503364751130627>')
+            await ctx.send('<@338503364751130627>' + output)
             time.sleep(.25)
             x += 1
 
