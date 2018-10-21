@@ -378,7 +378,7 @@ async def atcolin(ctx, *, message: str):
     size = len(args)
     words = args[1:size]
 
-    if args[1] != "":
+    if args[1] != " ":
         for word in words:
             output += (word + " ")
 
