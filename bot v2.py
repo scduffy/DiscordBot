@@ -402,7 +402,7 @@ async def at(ctx, *, message: str):
     output = ""
     size = len(args)
     words = args[2:size]
-    num = args[1]
+    num = int(args[1])
 
     if args[1] != " ":
         for word in words:
