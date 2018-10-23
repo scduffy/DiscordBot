@@ -395,6 +395,45 @@ async def atcolin(ctx, *, message: str):
             x += 1
 
 
+@bot.command()
+async def at(ctx, *, message: str):
+    args = message.split(" ")
+    x = 0
+    output = ""
+    size = len(args)
+    words = args[3:size]
+    num = args[2]
+
+    signature = ''
+
+    if args[1] == "neil":
+        signature = '<@212286463642042369>'
+    elif args[1] == "dani":
+        signature = '<@349748558674657282>'
+    elif args[1] == "colin":
+        signature = '<@338503364751130627>'
+    elif args[1] == "ryan":
+        signature = '<@212275808969031680>'
+    elif args[1] == "jak":
+        signature = '<@349714851926507523>'
+    elif args[1] == "andres":
+        signature = '<@338337679353577472>'
+    elif args[1] == "jack":
+        signature = '<@360590624254197761>'
+    elif args[1] == "jordan":
+        signature = '<@208742782507024384>'
+
+    if args[1] != " ":
+        await ctx.send('Invalid command arguments. ')
+
+    if args[1].isdigit():
+        while x < num:
+            await ctx.send(signature + output)
+            time.sleep(.3)
+            x += 1
+    else:
+        await ctx.send('Invalid command arguments. ')
+
 bot.remove_command('help')
 
 
@@ -419,6 +458,7 @@ async def help(ctx):
                                                  " Requires Admin permissions.", inline=False)
     embed.add_field(name="!andres", value="Reminds andres of a good place to learn how to code.", inline=False)
     embed.add_field(name="!atcolin", value="@'s colin for a specific num of times.", inline=False)
+    embed.add_field(name="!at", value="@'s someone for a specific num of times.", inline=False)
 
     await ctx.send(embed=embed)
 
