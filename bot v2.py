@@ -397,8 +397,7 @@ async def atcolin(ctx, *, message: str):
 
 @bot.command()
 async def at(ctx, *, message: str):
-    #ctx.author.id != 212286463642042369 or
-    if ctx.author.id != 175441095210041344:
+    if ctx.author.id != 212286463642042369 or ctx.author.id != 175441095210041344:
         await ctx.send('You do not have the required permissions to use this command. ')
         return
 
