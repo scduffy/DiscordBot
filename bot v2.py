@@ -404,27 +404,30 @@ async def at(ctx, *, message: str):
     words = args[2:size]
     num = args[1]
 
+    if args[1] != " ":
+        for word in words:
+            output += (word + " ")
+
     signature = ''
 
-    if args[0] == "neil":
+    if args[0].lower() == "neil":
         signature = '<@212286463642042369>'
-    elif args[0] == "dani":
+    elif args[0].lower() == "dani":
         signature = '<@349748558674657282>'
-    elif args[0] == "colin":
+    elif args[0].lower() == "colin":
         signature = '<@338503364751130627>'
-    elif args[0] == "ryan":
+    elif args[0].lower() == "ryan":
         signature = '<@212275808969031680>'
-    elif args[0] == "jak":
+    elif args[0].lower() == "jak":
         signature = '<@349714851926507523>'
-    elif args[0] == "andres":
-        signature = '<@338337679353577472>'
-    elif args[0] == "jack":
+    elif args[0].lower() == "andres":
+        signature ='<@338337679353577472>'
+    elif args[0].lower() == "jack":
         signature = '<@360590624254197761>'
-    elif args[0] == "jordan":
+    elif args[0].lower() == "jordan":
         signature = '<@208742782507024384>'
-
-    if args[0] != " ":
-        await ctx.send('Invalid command arguments. ')
+    else:
+        signature = '<@338503364751130627>'
 
     if args[1].isdigit():
         while x < num:
