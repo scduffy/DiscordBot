@@ -401,29 +401,29 @@ async def at(ctx, *, message: str):
     x = 0
     output = ""
     size = len(args)
-    words = args[3:size]
-    num = args[2]
+    words = args[2:size]
+    num = args[1]
 
     signature = ''
 
-    if args[1] == "neil":
+    if args[0] == "neil":
         signature = '<@212286463642042369>'
-    elif args[1] == "dani":
+    elif args[0] == "dani":
         signature = '<@349748558674657282>'
-    elif args[1] == "colin":
+    elif args[0] == "colin":
         signature = '<@338503364751130627>'
-    elif args[1] == "ryan":
+    elif args[0] == "ryan":
         signature = '<@212275808969031680>'
-    elif args[1] == "jak":
+    elif args[0] == "jak":
         signature = '<@349714851926507523>'
-    elif args[1] == "andres":
+    elif args[0] == "andres":
         signature = '<@338337679353577472>'
-    elif args[1] == "jack":
+    elif args[0] == "jack":
         signature = '<@360590624254197761>'
-    elif args[1] == "jordan":
+    elif args[0] == "jordan":
         signature = '<@208742782507024384>'
 
-    if args[1] != " ":
+    if args[0] != " ":
         await ctx.send('Invalid command arguments. ')
 
     if args[1].isdigit():
