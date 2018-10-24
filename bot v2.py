@@ -205,7 +205,8 @@ async def on_message(message):
     if message.author.id == 212286463642042369:
         if isBad:
             save_nickpost(message.content, "badBoi.txt")
-            await bot.channel.delete_message(message)
+            #await bot.delete_message(message)
+            await message.delete()
             await message.channel.send("*MESSAGE DELETED: PUNISHMENT FOR BEING BAD*")
 
         if len(message.content) >= 200:
