@@ -190,6 +190,28 @@ def retrieve_nickpost():
     return output
 
 
+def retrieve_badboi():
+    output = "__**Retrieved All Nickposts During Nick's Timeout:**__\n"
+    file = open("badBoi.txt")
+    nickpost_list = []
+
+    for nickpost in file:
+        nickpost.replace("“", "\"")
+        nickpost.replace("@", "__at__")
+        nickpost_list.append(nickpost)
+
+    nickpost_index = random.randint(0, len(nickpost_list)-1)
+    output += nickpost_list[nickpost_index]
+
+    nickpost_list.clear()
+
+    return output
+
+
+def clear_badboi():
+    open('badBoi.txt', 'w').close()
+
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -208,6 +230,7 @@ async def on_message(message):
             #await bot.delete_message(message)
             await message.delete()
             await message.channel.send("*MESSAGE DELETED: PUNISHMENT FOR BEING BAD*")
+            return
 
         if len(message.content) >= 200:
             save_nickpost(message.content, "nickposts.txt")
@@ -417,6 +440,8 @@ async def goodNick(ctx):
     if ctx.message.author != '344194195344588810':
         global isBad
         isBad = False
+        retrieve_badboi()
+        clear_badboi()
     else:
         await ctx.send("You can't use this command, Nick.")
 
