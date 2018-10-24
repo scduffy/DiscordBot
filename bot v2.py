@@ -201,7 +201,7 @@ def retrieve_badboi():
         nickpost_list.append(nickpost)
 
     if len(nickpost_list) == 0:
-        return "Nothing currently in file."
+        return output + "Nothing currently in file."
 
     nickpost_index = random.randint(0, len(nickpost_list)-1)
     output += nickpost_list[nickpost_index]
