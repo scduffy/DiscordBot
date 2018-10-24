@@ -9,6 +9,7 @@ import asyncio
 client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
+isBad = False;
 
 
 # All helper functions
@@ -129,9 +130,9 @@ def get_timestamp():
     return timestamp
 
 
-def save_nickpost(message):
+def save_nickpost(message, file):
     nickpost_list = []
-    read_file = open("nickposts.txt", "r")
+    read_file = open(file, "r")
     for nickpost in read_file:
         nickpost = nickpost.replace("[]\"", "")
         nickpost_list.append(nickpost)
@@ -200,9 +201,15 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.id == 344194195344588810:
+    #if message.author.id == 344194195344588810:
+    if message.author.id == 212286463642042369:
+        if isBad:
+            save_nickpost(message.content, "badBoi.txt")
+            await bot.delete_message(message)
+            await message.channel.send("*MESSAGE DELETED: PUNISHMENT FOR BEING BAD*")
+
         if len(message.content) >= 200:
-            save_nickpost(message.content)
+            save_nickpost(message.content, "nickposts.txt")
             await message.channel.send("*AUTISM DETECTED: ARCHIVING NICKPOST*")
 
     mentions = message.mentions
