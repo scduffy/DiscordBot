@@ -223,8 +223,8 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    #if message.author.id == 344194195344588810:
-    if message.author.id == 212286463642042369:
+    if message.author.id == 344194195344588810:
+    #if message.author.id == 212286463642042369:
         if isBad:
             save_nickpost(message.content, "badBoi.txt")
             #await bot.delete_message(message)
@@ -431,6 +431,7 @@ async def badNick(ctx):
     if ctx.message.author != '344194195344588810':
         global isBad
         isBad = True
+        await ctx.send("Nick has been bad, he can no longer send messages.")
     else:
         await ctx.send("You can't use this command, Nick.")
 
@@ -440,8 +441,9 @@ async def goodNick(ctx):
     if ctx.message.author != '344194195344588810':
         global isBad
         isBad = False
-        retrieve_badboi()
+        await ctx.send(retrieve_badboi())
         clear_badboi()
+        await ctx.send("Nick has been good, he can now send messages.")
     else:
         await ctx.send("You can't use this command, Nick.")
 
