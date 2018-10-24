@@ -200,6 +200,9 @@ def retrieve_badboi():
         nickpost.replace("@", "__at__")
         nickpost_list.append(nickpost)
 
+    if len(nickpost_list) == 0:
+        return "Nothing currently in file."
+
     nickpost_index = random.randint(0, len(nickpost_list)-1)
     output += nickpost_list[nickpost_index]
 
