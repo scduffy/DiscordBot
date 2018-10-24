@@ -9,7 +9,7 @@ import asyncio
 client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
-isBad = False;
+isBad = True;
 
 
 # All helper functions
