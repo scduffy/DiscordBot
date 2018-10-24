@@ -404,6 +404,25 @@ async def atcolin(ctx, *, message: str):
 
 
 @bot.command()
+async def badNick(ctx):
+    if ctx.message.author != '344194195344588810':
+        global isBad
+        isBad = True
+    else:
+        await ctx.send("You can't use this command, Nick.")
+
+
+@bot.command()
+async def goodNick(ctx):
+    if ctx.message.author != '344194195344588810':
+        global isBad
+        isBad = False
+    else:
+        await ctx.send("You can't use this command, Nick.")
+
+
+
+@bot.command()
 async def at(ctx, *, message: str):
     if ctx.author.id != 212286463642042369 and ctx.author.id != 175441095210041344:
         await ctx.send('You do not have the required permissions to use this command. ')
