@@ -138,7 +138,7 @@ def save_nickpost(message, file):
         nickpost_list.append(nickpost)
     read_file.close()
 
-    clear_file = open("nickposts.txt", "w")
+    clear_file = open(file, "w")
     clear_file.write("")
     clear_file.close()
 
@@ -159,7 +159,7 @@ def save_nickpost(message, file):
     temp_file.write("")
     temp_file.close()
 
-    with open("nickposts.txt", "a") as file:
+    with open(file, "a") as file:
         nickpost_list.append(get_timestamp() + ":" + "\n" + new_message)
         for chromosome in nickpost_list:
             chromosome = chromosome.replace("[]", "")
