@@ -226,6 +226,17 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    if message.author.id != 405417026899804166:
+        if "im " in message.content.lower():
+            name = message.content.lower().split("im ")
+            await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+        elif "i'm " in message.content.lower():
+            name = message.content.lower().split("i'm ")
+            await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+        elif "i’m " in message.content.lower():
+            name = message.content.lower().split("i’m ")
+            await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+
     if message.author.id == 344194195344588810:
     #if message.author.id == 212286463642042369:
         if isBad:
@@ -404,12 +415,15 @@ async def nick(ctx):
 
 
 @bot.command()
-async def atcolin(ctx, *, message: str):
+async def ripcolin(ctx, *, message: str):
 
     args = message.split(" ")
     x = 0
     output = ""
     size = len(args)
+    if size > 100:
+        size = 10
+
     words = args[1:size]
 
     if args[1] != " ":
@@ -490,6 +504,8 @@ async def at(ctx, *, message: str):
     else:
         signature = '<@338503364751130627>'
 
+    if num > 100:
+        num = 10
     if args[1].isdigit():
         while x < num:
             await ctx.send(signature + output)
