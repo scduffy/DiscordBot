@@ -226,8 +226,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.id != 405417026899804166:
-        if "im " in message.content.lower():
+    #if message.author.id != 405417026899804166:
+    if message.author.id != 212286463642042369:
+        if " im " in message.content.lower():
             name = message.content.lower().split("im ")
             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
         elif "i'm " in message.content.lower():
@@ -465,7 +466,6 @@ async def goodNick(ctx):
         await ctx.send("You can't use this command, Nick.")
 
 
-
 @bot.command()
 async def at(ctx, *, message: str):
     if ctx.author.id != 212286463642042369 and ctx.author.id != 175441095210041344:
@@ -496,7 +496,7 @@ async def at(ctx, *, message: str):
     elif args[0].lower() == "jak":
         signature = '<@349714851926507523>'
     elif args[0].lower() == "andres":
-        signature ='<@338337679353577472>'
+        signature = '<@338337679353577472>'
     elif args[0].lower() == "jack":
         signature = '<@360590624254197761>'
     elif args[0].lower() == "jordan":
