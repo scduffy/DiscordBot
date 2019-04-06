@@ -4,6 +4,7 @@ from datetime import datetime
 import random
 from discord import Game
 import time
+from enum import Enum
 import asyncio
 
 client = discord.Client()
@@ -215,11 +216,38 @@ def clear_badboi():
     open('badBoi.txt', 'w').close()
 
 
-@client.event
+class UptimeStatus(Enum):
+    Online = 1
+    Offline = 2
+
+
+class UptimeMap(object):
+    def __init__(self):
+        self.internal_map = {}
+
+    def reset_user(self, mid, time=None):
+        self.internal_map[mid] = (UptimeStatus.Online, time)
+
+    def logout_user(self, mid, time):
+        self.internal_map[mid] = (UptimeStatus.Offline, time)
+
+    def remove_user(self, mid):
+        self.internal_map.pop(mid, None)
+
+    def get_users_uptime(self, mid):
+        return self.internal_map.get(mid, (None, None))
+
+
+uptime_map = UptimeMap()
+
+@bot.event
 async def on_member_update(before, after):
-    if str(before.status) == "offline":
-        if str(after.status) == "online":
-            print("{} has gone {}.".format(after.name, after.status))
+    if before.status == discord.Status.offline and after.status != discord.Status.offline:
+        # "Log" user in
+        print("online")
+    elif before.status != discord.Status.offline and after.status == discord.Status.offline:
+        # "Log out" the user
+        print("offline")
 
 
 @bot.event
