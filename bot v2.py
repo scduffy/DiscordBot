@@ -9,7 +9,7 @@ import asyncio
 client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
-isBad = True;
+isBad = True
 
 
 # All helper functions
@@ -213,6 +213,13 @@ def retrieve_badboi():
 
 def clear_badboi():
     open('badBoi.txt', 'w').close()
+
+
+@client.event
+async def on_member_update(before, after):
+    if str(before.status) == "offline":
+        if str(after.status) == "online":
+            print("{} has gone {}.".format(after.name, after.status))
 
 
 @bot.event
