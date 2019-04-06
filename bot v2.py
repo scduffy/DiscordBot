@@ -240,14 +240,17 @@ class UptimeMap(object):
 
 uptime_map = UptimeMap()
 
+
 @bot.event
 async def on_member_update(before, after):
+
+    servers = ['416775773966434314', '503646368557039618', '346780584653094913']
+
     if before.status == discord.Status.offline and after.status != discord.Status.offline:
-        # "Log" user in
-        print("online")
-    elif before.status != discord.Status.offline and after.status == discord.Status.offline:
-        # "Log out" the user
-        print("offline")
+        # notify users that isaacman is online
+        if after.id == '288358024731426818':
+            for x in range(len(servers)):
+                await bot.send_message(bot.get_channel( servers[x] ), "Isaacman is ONLINE!!!")
 
 
 @bot.event
