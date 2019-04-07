@@ -243,11 +243,14 @@ uptime_map = UptimeMap()
 
 @bot.event
 async def on_member_update(before, after):
-    if before.id == 212286463642042369:
+
+    servers = [346780584653094913, 503646368557039618, 416775773966434314]
+
+    if before.id == 288358024731426818:
         if str(before.status) == "offline":
-            print("bazinga")
-            ctx = bot.get_channel(346780584653094913)
-            await ctx.send('Isaacman is online')
+            for x in range(len(servers)):
+                ctx = bot.get_channel(servers[x])
+                await ctx.send('Isaacman is ONLINE!!')
 
 
 @bot.event
