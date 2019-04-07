@@ -1,4 +1,4 @@
-from termcolor import colored
+from colorama import Fore
 
 triangle = [ [75],
              [95, 64],
@@ -57,9 +57,7 @@ z = 0
 for row in triangle:
     for num in row:
         if num == path[z]:
-            #print(".", num, ". ", end="")
-            text = colored(num, 'red')
-            print(text)
+            print(Fore.RED + str(num), end="")
         else:
             print(num, end=" ")
     z = z + 1
