@@ -216,31 +216,6 @@ def clear_badboi():
     open('badBoi.txt', 'w').close()
 
 
-class UptimeStatus(Enum):
-    Online = 1
-    Offline = 2
-
-
-class UptimeMap(object):
-    def __init__(self):
-        self.internal_map = {}
-
-    def reset_user(self, mid, time=None):
-        self.internal_map[mid] = (UptimeStatus.Online, time)
-
-    def logout_user(self, mid, time):
-        self.internal_map[mid] = (UptimeStatus.Offline, time)
-
-    def remove_user(self, mid):
-        self.internal_map.pop(mid, None)
-
-    def get_users_uptime(self, mid):
-        return self.internal_map.get(mid, (None, None))
-
-
-uptime_map = UptimeMap()
-
-
 @bot.event
 async def on_member_update(before, after):
 
