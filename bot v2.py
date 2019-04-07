@@ -125,7 +125,6 @@ def get_timestamp():
     full_time[1] = time[0]
 
     date = full_time[0].split("-")
-
     timestamp = str(date[1] + "/" + date[2] + "/" + date[0] + " @ " + full_time[1] + "(EST)")
 
     return timestamp
@@ -175,7 +174,7 @@ def save_nickpost(message, file):
 
 def retrieve_nickpost():
     output = "__**Retrieved Random Archived Nickpost:**__\n"
-    file = open("nickposts.txt")
+    file = open("nickposts.txt", encoding="utf8")
     nickpost_list = []
 
     for nickpost in file:
