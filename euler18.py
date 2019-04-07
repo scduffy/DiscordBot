@@ -1,4 +1,4 @@
-from colorama import Fore
+#from colorama import Fore
 
 triangle = [ [75],
              [95, 64],
@@ -57,7 +57,8 @@ z = 0
 for row in triangle:
     for num in row:
         if num == path[z]:
-            print(Fore.RED + str(num), end="")
+            #print(Fore.RED + str(num), end="")
+            print("No", end="")
         else:
             print(num, end=" ")
     z = z + 1
