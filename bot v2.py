@@ -528,7 +528,7 @@ async def at(ctx, *, message: str):
             x += 1
     else:
         await ctx.send('Invalid command arguments. ')
-        await ctx.send('Usage !at <name> <num at\'s> <message> ')
+        await ctx.send('Usage: !at <name> <num at\'s> <message> ')
 
 bot.remove_command('help')
 
