@@ -491,7 +491,7 @@ async def at(ctx, *, message: str):
     output = ""
     size = len(args)
     words = args[2:size]
-    num = int(args[1])
+    #num = int(args[1])
 
     if args[1] != " ":
         for word in words:
@@ -518,9 +518,10 @@ async def at(ctx, *, message: str):
     else:
         signature = '<@338503364751130627>'
 
-    if num > 100:
-        num = 10
     if args[1].isdigit():
+        num = int(args[1])
+        if num > 100:
+            num = 10
         while x < num:
             await ctx.send(signature + output)
             time.sleep(.3)
