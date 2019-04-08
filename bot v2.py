@@ -490,6 +490,7 @@ async def ripcolin(ctx, *, message: str):
         for word in words:
             output += (word + " ")
 
+    preserve_at_count("colin", int(args[0]), "w")
     if args[0].isdigit():
         i = int(args[0])
         while x < i:
@@ -579,14 +580,17 @@ bot.remove_command('help')
 
 @bot.command()
 async def status(ctx, message: str):
-    args = message.split(" ")
-    output = ""
-    if len(args) > 1:
-        output = output + "Invalid use of command."
-    else:
-        output = output + preserve_at_count(args[0], 0, "r")
+    try:
+        args = message.split(" ")
+        output = ""
+        if len(args) > 1:
+            output = output + "Invalid use of command."
+        else:
+            output = output + preserve_at_count(args[0], 0, "r")
 
-    await ctx.send(output)
+        await ctx.send(output)
+    except:
+        ctx.send("invalid use of command.")
 
 @bot.command()
 async def help(ctx):
