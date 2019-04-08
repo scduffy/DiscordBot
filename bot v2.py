@@ -11,6 +11,51 @@ bot = commands.Bot(command_prefix='!')
 afk_set = {}
 isBad = True;
 
+def preserve_at_count(name, num, action):
+    output = ""
+    file = None
+    at_list = []
+
+    if action == "r":
+        print("Reading the at file\n")
+        output = "__**At Count For " + name + ":**__\n"
+        file = open("at_count.txt")
+
+        for person in file:
+            at_list = person.split(",")
+            if at_list[0] == name:
+                output += at_list[1]
+                file.close()
+                break;
+
+    elif action == "w":
+        print("writing to the at file\n")
+        file = open("at_count.txt", "r")
+        old_file = []
+        line_num = 0
+        for person in file:
+            at_list = person.split(",")
+            if at_list[0] == name:
+                curr_num = int(at_list[1])
+                curr_num = curr_num + num
+                updated = name + "," + str(curr_num) + "\n"
+                old_file.append(updated)
+            else:
+                old_file.append(at_list[0] + "," + at_list[1])
+            line_num = line_num + 1
+        file.close()
+
+        file = open("at_count.txt", "w")
+        for person in old_file:
+            file.write(person)
+        file.close()
+
+    else:
+        print("invalid use of function\n")
+
+    at_list.clear()
+    return output
+
 
 # All helper functions
 def time_to_hq():
@@ -509,6 +554,7 @@ async def at(ctx, *, message: str):
     if num > 100:
         num = 10
     if args[1].isdigit():
+        preserve_at_count(args[0], num, "w")
         while x < num:
             await ctx.send(signature + output)
             time.sleep(.3)
@@ -518,6 +564,17 @@ async def at(ctx, *, message: str):
 
 bot.remove_command('help')
 
+
+@bot.command()
+async def status(ctx, *, message: str):
+    args = message.split(" ")
+    output = ""
+    if args > 1:
+        output = output + "Invalid use of command."
+    else:
+        output = output + preserve_at_count(args[0], 0, "r")
+
+    await ctx.send(output)
 
 @bot.command()
 async def help(ctx):
@@ -541,6 +598,7 @@ async def help(ctx):
     embed.add_field(name="!andres", value="Reminds andres of a good place to learn how to code.", inline=False)
     embed.add_field(name="!atcolin", value="@'s colin for a specific num of times.", inline=False)
     embed.add_field(name="!at", value="@'s someone for a specific num of times.", inline=False)
+    embed.add_field(name="!status", value="Returns current tally of times given name has been hit with the @ attack", inline=False)
 
     await ctx.send(embed=embed)
 
