@@ -564,8 +564,9 @@ async def at(ctx, *, message: str):
         signature = '<@338503364751130627>'
 
     if args[1].isdigit():
-        preserve_at_count(args[0], num, "w")
-        while x < num:
+
+        preserve_at_count(args[0], args[1], "w")
+        while x < args[1]:
             await ctx.send(signature + output)
             time.sleep(.3)
             x += 1
