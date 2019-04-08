@@ -4,12 +4,13 @@ from datetime import datetime
 import random
 from discord import Game
 import time
+from enum import Enum
 import asyncio
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
-isBad = True;
+isBad = True
 
 def preserve_at_count(name, num, action):
     output = ""
@@ -169,7 +170,6 @@ def get_timestamp():
     full_time[1] = time[0]
 
     date = full_time[0].split("-")
-
     timestamp = str(date[1] + "/" + date[2] + "/" + date[0] + " @ " + full_time[1] + "(EST)")
 
     return timestamp
@@ -219,7 +219,7 @@ def save_nickpost(message, file):
 
 def retrieve_nickpost():
     output = "__**Retrieved Random Archived Nickpost:**__\n"
-    file = open("nickposts.txt")
+    file = open("nickposts.txt", encoding="utf8")
     nickpost_list = []
 
     for nickpost in file:
@@ -258,6 +258,18 @@ def retrieve_badboi():
 
 def clear_badboi():
     open('badBoi.txt', 'w').close()
+
+
+@bot.event
+async def on_member_update(before, after):
+
+    servers = [346780584653094913, 503646368557039618, 416775773966434314]
+
+    if before.id == 288358024731426818:
+        if str(before.status) == "offline":
+            for x in range(len(servers)):
+                ctx = bot.get_channel(servers[x])
+                await ctx.send('Isaacman is ONLINE!!')
 
 
 @bot.event
@@ -524,7 +536,7 @@ async def at(ctx, *, message: str):
     output = ""
     size = len(args)
     words = args[2:size]
-    num = int(args[1])
+    #num = int(args[1])
 
     if args[1] != " ":
         for word in words:
@@ -551,8 +563,6 @@ async def at(ctx, *, message: str):
     else:
         signature = '<@338503364751130627>'
 
-    if num > 100:
-        num = 10
     if args[1].isdigit():
         preserve_at_count(args[0], num, "w")
         while x < num:
@@ -561,6 +571,7 @@ async def at(ctx, *, message: str):
             x += 1
     else:
         await ctx.send('Invalid command arguments. ')
+        await ctx.send('Usage: !at <name> <num at\'s> <message> ')
 
 bot.remove_command('help')
 
