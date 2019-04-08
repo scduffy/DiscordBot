@@ -565,8 +565,8 @@ async def at(ctx, *, message: str):
 
     if args[1].isdigit():
 
-        preserve_at_count(args[0], args[1], "w")
-        while x < args[1]:
+        preserve_at_count(args[0], int(args[1]), "w")
+        while x < int(args[1]):
             await ctx.send(signature + output)
             time.sleep(.3)
             x += 1
@@ -578,10 +578,10 @@ bot.remove_command('help')
 
 
 @bot.command()
-async def status(ctx, *, message: str):
+async def status(ctx, message: str):
     args = message.split(" ")
     output = ""
-    if args > 1:
+    if len(args) > 1:
         output = output + "Invalid use of command."
     else:
         output = output + preserve_at_count(args[0], 0, "r")
