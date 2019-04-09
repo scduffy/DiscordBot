@@ -287,12 +287,12 @@ async def on_message(message):
         if " im " in message.content.lower():
             name = message.content.lower().split("im ")
             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-         elif "i'm " in message.content.lower():
-             name = message.content.lower().split("i'm ")
-             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-         elif "i’m " in message.content.lower():
-             name = message.content.lower().split("i’m ")
-             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+        elif "i'm " in message.content.lower():
+            name = message.content.lower().split("i'm ")
+            await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+        elif "i’m " in message.content.lower():
+            name = message.content.lower().split("i’m ")
+            await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
     #if message.author.id != 405417026899804166:
     # if message.author.id != 212286463642042369:
     #     if message.author.id != 405417026899804166:
