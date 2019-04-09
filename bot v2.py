@@ -284,18 +284,18 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     #if message.author.id != 405417026899804166:
-    if message.author.id != 212286463642042369:
-        if message.author.id != 405417026899804166:
-            if message.author.id != 175441095210041344:
-                if " im " in message.content.lower():
-                    name = message.content.lower().split("im ")
-                    await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-                elif "i'm " in message.content.lower():
-                    name = message.content.lower().split("i'm ")
-                    await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-                elif "i’m " in message.content.lower():
-                    name = message.content.lower().split("i’m ")
-                    await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+    # if message.author.id != 212286463642042369:
+    #     if message.author.id != 405417026899804166:
+    #         if message.author.id != 175441095210041344:
+    #             if " im " in message.content.lower():
+    #                 name = message.content.lower().split("im ")
+    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+    #             elif "i'm " in message.content.lower():
+    #                 name = message.content.lower().split("i'm ")
+    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
+    #             elif "i’m " in message.content.lower():
+    #                 name = message.content.lower().split("i’m ")
+    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
 
     if message.author.id == 344194195344588810:
     #if message.author.id == 212286463642042369:
@@ -580,17 +580,14 @@ bot.remove_command('help')
 
 @bot.command()
 async def status(ctx, message: str):
-    try:
-        args = message.split(" ")
-        output = ""
-        if len(args) > 1:
-            output = output + "Invalid use of command."
-        else:
-            output = output + preserve_at_count(args[0], 0, "r")
+    args = message.split(" ")
+    output = ""
+    if len(args) > 1:
+        output = output + "Invalid use of command."
+    else:
+        output = output + preserve_at_count(args[0], 0, "r")
 
-        await ctx.send(output)
-    except:
-        ctx.send("invalid use of command.")
+    await ctx.send(output)
 
 @bot.command()
 async def help(ctx):
