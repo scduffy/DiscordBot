@@ -283,7 +283,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.id 338503364751130627:
+    if message.author.id == 338503364751130627:
         if " im " in message.content.lower():
             name = message.content.lower().split("im ")
             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
