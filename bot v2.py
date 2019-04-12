@@ -29,7 +29,7 @@ def preserve_at_count(name, num, action):
                 output += at_list[1]
                 file.close()
                 break;
-            output += "none lol"
+            output += "none lol "
 
     elif action == "w":
         print("writing to the at file\n")
@@ -619,6 +619,12 @@ async def status(ctx, message: str):
         output = output + preserve_at_count(args[0], 0, "r")
 
     await ctx.send(output)
+
+@bot.command()
+async def kill(ctx):
+
+
+    await ctx.send("I was just learning to love......")
 
 @bot.command()
 async def help(ctx):
