@@ -620,11 +620,12 @@ async def status(ctx, message: str):
 
     await ctx.send(output)
 
+
 @bot.command()
 async def kill(ctx):
     if ctx.message.author.id == 212286463642042369 or ctx.message.author.id == 175441095210041344:
         await ctx.send("I was just learning to love......")
-        client.close()
+        await client.logout()
         exit(0)
     else:
         await ctx.send("Unfortunately...")

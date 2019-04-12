@@ -1,8 +1,8 @@
-colin,15
+colin,106
 andres,0
 jack,0
-neil,0
-chase,0
+neil,3
+chase,20
 ryan,0
-dani,0
+dani,11
 jordan,0
