@@ -286,7 +286,34 @@ async def on_message(message):
     mentions = message.mentions
 
     if len(mentions) > 0:
-        print(mentions[0])
+        for user in mentions:
+            name = ""
+            if user.id == 338503364751130627:
+                name = "colin"
+                #colin
+            elif user.id == 212286463642042369:
+                name = "chase"
+                #chase
+            elif user.id == 349714851926507523:
+                name = "jack"
+                #Jack
+            elif user.id == 175441095210041344:
+                name = "neil"
+                #nil
+            elif user.id == 349748558674657282:
+                name = "dani"
+                #dani
+            elif user.id == 338337679353577472:
+                name = "andres"
+                #Andres
+            elif user.id == 212275808969031680:
+                name = "ryan"
+                #ryan
+            elif user.id == 208742782507024384:
+                name = "jordan"
+                #jordan
+
+            preserve_at_count(name, 1, "w")
 
     if message.author.id == 338503364751130627:
         if " im " in message.content.lower():
