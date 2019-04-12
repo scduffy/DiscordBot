@@ -368,8 +368,9 @@ async def info(ctx):
 
 @bot.command()
 async def testbot(ctx):
+    message = "Online since: " + str(start_time)
     await ctx.send("Responding.")
-    await ctx.send("Online since: "+ start_time)
+    await ctx.send(message)
 
 
 @bot.command()
