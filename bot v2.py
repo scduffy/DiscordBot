@@ -622,9 +622,16 @@ async def status(ctx, message: str):
 
 @bot.command()
 async def kill(ctx):
+    # if ctx.message.author == 212286463642042369 or ctx.message.author == 175441095210041344:
+    if ctx.message.author == 175441095210041344:
+        await ctx.send("I was just learning to love......")
+        exit(0)
+    else:
+        await ctx.send("Unfortunately...")
+        await ctx.send("You are not powerful enough to kill me!")
 
-
-    await ctx.send("I was just learning to love......")
+        for x in range(10):
+            await ctx.send(str(ctx.message.author.id) + "HAHAHAHA")
 
 @bot.command()
 async def help(ctx):
