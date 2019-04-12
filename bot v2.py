@@ -12,6 +12,7 @@ bot = commands.Bot(command_prefix='!')
 afk_set = {}
 isBad = True
 
+
 def preserve_at_count(name, num, action):
     output = ""
     file = None
@@ -28,6 +29,7 @@ def preserve_at_count(name, num, action):
                 output += at_list[1]
                 file.close()
                 break;
+            output += "none lol"
 
     elif action == "w":
         print("writing to the at file\n")
