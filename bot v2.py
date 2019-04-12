@@ -11,6 +11,7 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
 isBad = True
+start_time = ""
 
 
 def preserve_at_count(name, num, action):
@@ -281,6 +282,7 @@ async def on_ready():
     print(bot.user.id)
     print('- - - - - -')
     await bot.change_presence(activity=Game(name="Programming: The Andres/Colin Odyssey"))
+    start_time = datetime.now()
 
 
 @bot.event
@@ -368,6 +370,7 @@ async def info(ctx):
 @bot.command()
 async def testbot(ctx):
     await ctx.send("Responding.")
+    await ctx.send("Online since: "+ start_time)
 
 
 @bot.command()
