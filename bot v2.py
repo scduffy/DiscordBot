@@ -283,8 +283,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if "@" in message.content:
-        print("confirmed")
+    mentions = message.mentions
+
+    if len(mentions) > 0:
+        print(mentions[0])
 
     if message.author.id == 338503364751130627:
         if " im " in message.content.lower():
