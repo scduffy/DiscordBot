@@ -283,7 +283,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if(message.content.contains("@")):
+    if "@" in message.content:
         print("confirmed")
 
     if message.author.id == 338503364751130627:
