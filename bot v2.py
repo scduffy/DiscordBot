@@ -622,7 +622,7 @@ async def status(ctx, message: str):
 
 @bot.command()
 async def kill(ctx):
-    if ctx.message.author == 212286463642042369 or ctx.message.author == 175441095210041344:
+    if ctx.message.author.id == 212286463642042369 or ctx.message.author.id == 175441095210041344:
         await ctx.send("I was just learning to love......")
         exit(0)
     else:
