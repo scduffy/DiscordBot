@@ -283,6 +283,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    if(message.content.contains("@")):
+        print("confirmed")
+
     if message.author.id == 338503364751130627:
         if " im " in message.content.lower():
             name = message.content.lower().split("im ")
@@ -293,19 +296,6 @@ async def on_message(message):
         elif "i’m " in message.content.lower():
             name = message.content.lower().split("i’m ")
             await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-    #if message.author.id != 405417026899804166:
-    # if message.author.id != 212286463642042369:
-    #     if message.author.id != 405417026899804166:
-    #         if message.author.id != 175441095210041344:
-    #             if " im " in message.content.lower():
-    #                 name = message.content.lower().split("im ")
-    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-    #             elif "i'm " in message.content.lower():
-    #                 name = message.content.lower().split("i'm ")
-    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
-    #             elif "i’m " in message.content.lower():
-    #                 name = message.content.lower().split("i’m ")
-    #                 await message.channel.send("Hi " + name[1] + ", I'm Autism Removal.")
 
     if message.author.id == 344194195344588810:
     #if message.author.id == 212286463642042369:
