@@ -11,7 +11,7 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='!')
 afk_set = {}
 isBad = True
-start_time = ""
+start_time = datetime.now()
 
 
 def preserve_at_count(name, num, action):
@@ -282,7 +282,6 @@ async def on_ready():
     print(bot.user.id)
     print('- - - - - -')
     await bot.change_presence(activity=Game(name="Programming: The Andres/Colin Odyssey"))
-    start_time = datetime.now()
 
 
 @bot.event
