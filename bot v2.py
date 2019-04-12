@@ -631,7 +631,7 @@ async def kill(ctx):
         await ctx.send("You are not powerful enough to kill me!")
 
         for x in range(10):
-            await ctx.send(str(ctx.message.author.id) + "HAHAHAHA")
+            await ctx.send("<@" + str(ctx.message.author.id) + "> HAHAHAHA")
 
 @bot.command()
 async def help(ctx):
